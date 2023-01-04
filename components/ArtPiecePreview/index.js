@@ -1,4 +1,4 @@
-import Image from "next/image.js";
+import { StyledImage } from "../StyledImage.js";
 import styled from "styled-components";
 
 const ImageContainer = styled.div`
@@ -22,10 +22,6 @@ const Caption = styled.figcaption`
   background-color: black;
   color: white;
   padding: 0.5rem 0.3rem;
-`;
-
-const StyledImage = styled(Image)`
-  object-fit: cover;
 `;
 
 export default function ArtPiecePreview({ title, image, artist }) {
