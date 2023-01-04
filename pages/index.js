@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import ArtPieces from "../components/ArtPieces.js";
+import ArtPieces from "../components/ArtPieces";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 

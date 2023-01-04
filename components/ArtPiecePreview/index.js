@@ -4,15 +4,21 @@ import styled from "styled-components";
 const ImageContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 80%;
+  height: 100%;
 `;
 
 const Figure = styled.figure`
-  width: 300px;
-  height: 400px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
 `;
 
 const Caption = styled.figcaption`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   background-color: black;
   color: white;
   padding: 0.5rem 0.3rem;
@@ -24,13 +30,11 @@ const StyledImage = styled(Image)`
 
 export default function ArtPiecePreview({ title, image, artist }) {
   return (
-    <li>
-      <Figure>
-        <ImageContainer>
-          <StyledImage src={image} fill alt="" />
-        </ImageContainer>
-        <Caption>{`${artist}: ${title}`}</Caption>
-      </Figure>
-    </li>
+    <Figure>
+      <ImageContainer>
+        <StyledImage src={image} fill alt={`${artist}: ${title}`} />
+      </ImageContainer>
+      <Caption>{`${artist}: ${title}`}</Caption>
+    </Figure>
   );
 }
