@@ -7,6 +7,7 @@ test("renders image, title and artist for the piece", () => {
       artist="Steve Johnson"
       image="https://example-apis.vercel.app/assets/art/orange-red-and-green.jpg"
       title="Orange Red and Green Abstract Painting"
+      slug="orange-red-and-green"
     />
   );
   const image = screen.getByAltText(
