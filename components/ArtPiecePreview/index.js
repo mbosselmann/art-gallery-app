@@ -1,5 +1,6 @@
 import { StyledImage } from "../StyledImage.js";
 import styled from "styled-components";
+import Link from "next/link.js";
 
 const ImageContainer = styled.div`
   position: relative;
@@ -24,13 +25,42 @@ const Caption = styled.figcaption`
   padding: 0.5rem 0.3rem;
 `;
 
-export default function ArtPiecePreview({ title, image, artist }) {
+const Anchor = styled.a`
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+`;
+
+const ScreenReaderOnly = styled.span`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+`;
+
+export default function ArtPiecePreview({ title, image, artist, slug }) {
   return (
     <Figure>
       <ImageContainer>
         <StyledImage src={image} fill alt={`${artist}: ${title}`} />
       </ImageContainer>
       <Caption>{`${artist}: ${title}`}</Caption>
+      <Link href={`art-pieces/${slug}`} passhref legacyBehavior>
+        <Anchor>
+          <ScreenReaderOnly>More Info</ScreenReaderOnly>
+        </Anchor>
+      </Link>
     </Figure>
   );
 }
