@@ -1,15 +1,9 @@
-import useSWR from "swr";
 import ArtPieces from "../components/ArtPieces";
 import Spotlight from "../components/Spotlight/index.js";
 
-const fetcher = (url) => fetch(url).then((r) => r.json());
-
-export default function HomePage() {
-  const { data } = useSWR("https://example-apis.vercel.app/api/art", fetcher);
-  console.log(data);
-
+export default function SpotlightPage({ pieces }) {
   const spotlightPiece =
-    data && data[Math.floor(Math.random() * (data.length - 1))];
+    pieces && pieces[Math.floor(Math.random() * (pieces.length - 1))];
 
   return (
     <main>
@@ -20,7 +14,6 @@ export default function HomePage() {
           artist={spotlightPiece.artist}
         />
       )}
-      <ArtPieces pieces={data} />
     </main>
   );
 }
