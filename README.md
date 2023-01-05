@@ -1,4 +1,4 @@
-# New Project
+# Art Gallery App
 
 This project was created from the neue fische next template.
 
