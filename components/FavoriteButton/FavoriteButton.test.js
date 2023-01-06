@@ -17,7 +17,7 @@ test("calls onToggleFavorite on button click", async () => {
   expect(mockOnToggleFavorite).toHaveBeenCalled();
 });
 
-test("displays a gold background color if isFavorite is true", () => {
+test("displays the active color if isFavorite is true", () => {
   render(<FavoriteButton isFavorite={true} />);
 
   const button = screen.getByRole("button", { name: "unlike" });
