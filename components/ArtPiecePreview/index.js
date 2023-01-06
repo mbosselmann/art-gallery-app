@@ -1,6 +1,7 @@
 import { StyledImage } from "../StyledImage.js";
 import styled from "styled-components";
 import Link from "next/link.js";
+import FavoriteButton from "../FavoriteButton/index.js";
 
 const ImageContainer = styled.div`
   position: relative;
@@ -49,10 +50,21 @@ const ScreenReaderOnly = styled.span`
   border-width: 0;
 `;
 
-export default function ArtPiecePreview({ title, image, artist, slug }) {
+export default function ArtPiecePreview({
+  title,
+  image,
+  artist,
+  slug,
+  isFavorite,
+  onToggleFavorite,
+}) {
   return (
     <Figure>
       <ImageContainer>
+        <FavoriteButton
+          isFavorite={isFavorite}
+          onToggleFavorite={() => onToggleFavorite(slug)}
+        />
         <StyledImage src={image} fill alt={`${artist}: ${title}`} />
       </ImageContainer>
       <Caption>{`${artist}: ${title}`}</Caption>
