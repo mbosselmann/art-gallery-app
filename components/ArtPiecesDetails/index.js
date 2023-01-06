@@ -1,6 +1,7 @@
 import { StyledImage } from "../StyledImage.js";
 import styled from "styled-components";
 import Link from "next/link.js";
+import FavoriteButton from "../FavoriteButton";
 
 const ImageContainer = styled.div`
   position: relative;
@@ -13,10 +14,16 @@ export default function ArtPiecesDetails({
   artist,
   year,
   genre,
+  isFavorite,
+  onToggleFavorite,
 }) {
   return (
     <>
       <ImageContainer>
+        <FavoriteButton
+          isFavorite={isFavorite}
+          onToggleFavorite={onToggleFavorite}
+        />
         <StyledImage src={image} fill alt={`${artist}: ${title}`} />
       </ImageContainer>
       <Link href="/art-pieces">Back</Link>
