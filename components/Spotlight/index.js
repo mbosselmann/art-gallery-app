@@ -5,7 +5,13 @@ import FavoriteButton from "../FavoriteButton/index.js";
 const ImageContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 30rem;
+  height: 25rem;
+`;
+
+const Wrapper = styled.div`
+  text-align: center;
+  display: grid;
+  place-items: center;
 `;
 
 export default function Spotlight({
@@ -15,15 +21,16 @@ export default function Spotlight({
   isFavorite,
 }) {
   return (
-    <>
+    <Wrapper>
       <ImageContainer>
         <FavoriteButton
           isFavorite={isFavorite}
           onToggleFavorite={onToggleFavorite}
+          positionAbsolute={true}
         />
         <StyledImage src={image} fill alt={`spotlight: ${artist}`} />
       </ImageContainer>
       <h2>{artist}</h2>
-    </>
+    </Wrapper>
   );
 }

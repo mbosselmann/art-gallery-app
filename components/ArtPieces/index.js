@@ -5,32 +5,37 @@ const List = styled.ul`
   list-style: none;
   padding-left: 0;
   margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 20rem));
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
 
   li {
-    width: 100%;
+    width: 30rem;
+    min-width: 10rem;
     height: 30rem;
   }
 `;
 
 export default function ArtPieces({ pieces, artPiecesInfo, onToggleFavorite }) {
   return (
-    <List>
-      {pieces?.map((piece) => (
-        <li key={piece.slug}>
-          <ArtPiecePreview
-            title={piece.name}
-            image={piece.imageSource}
-            artist={piece.artist}
-            slug={piece.slug}
-            isFavorite={artPiecesInfo?.find(
-              (artPiece) => artPiece.slug === piece.slug
-            )}
-            onToggleFavorite={onToggleFavorite}
-          />
-        </li>
-      ))}
-    </List>
+    <>
+      <List>
+        {pieces?.map((piece) => (
+          <li key={piece.slug}>
+            <ArtPiecePreview
+              title={piece.name}
+              image={piece.imageSource}
+              artist={piece.artist}
+              slug={piece.slug}
+              isFavorite={artPiecesInfo?.find(
+                (artPiece) => artPiece.slug === piece.slug
+              )}
+              onToggleFavorite={onToggleFavorite}
+            />
+          </li>
+        ))}
+      </List>
+    </>
   );
 }

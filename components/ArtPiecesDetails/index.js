@@ -1,18 +1,27 @@
-import { StyledImage } from "../StyledImage.js";
 import styled from "styled-components";
-import Link from "next/link.js";
 import FavoriteButton from "../FavoriteButton";
+import Image from "next/image.js";
+import { useRouter } from "next/router";
 
-const ImageContainer = styled.div`
-  position: relative;
-  height: 30rem;
+const Wrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
-const ColorList = styled.ul`
+const ActionContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 12rem;
+`;
+
+const List = styled.ul`
   list-style: none;
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
+  justify-content: center;
+  padding-left: 0;
 `;
 
 const Color = styled.li`
@@ -20,6 +29,30 @@ const Color = styled.li`
   height: 2rem;
   background-color: ${(props) => props.color};
   border-radius: 50%;
+`;
+
+const StyledImage = styled(Image)`
+  object-fit: scale-down;
+`;
+
+const ImageContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 20rem;
+`;
+
+const BackButton = styled.button`
+  background-color: white;
+  text-decoration: none;
+  border: 3px solid black;
+  color: black;
+  font-size: 2rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  padding: 0 0 0 0.1rem;
 `;
 
 export default function ArtPiecesDetails({
@@ -32,27 +65,37 @@ export default function ArtPiecesDetails({
   onToggleFavorite,
   colors,
 }) {
+  const router = useRouter();
+
   return (
-    <>
-      <ImageContainer>
+    <Wrapper>
+      <ActionContainer>
+        <BackButton
+          type="button"
+          onClick={() => router.back()}
+          aria-label="back"
+        >
+          ←
+        </BackButton>
         <FavoriteButton
           isFavorite={isFavorite}
           onToggleFavorite={onToggleFavorite}
         />
+      </ActionContainer>
+      <h2>{title}</h2>
+      <ImageContainer>
         <StyledImage src={image} fill alt={`${artist}: ${title}`} />
       </ImageContainer>
-      <Link href="/art-pieces">Back</Link>
-      <h2>{title}</h2>
-      <ColorList role="list">
+      <List role="list">
         {colors.map((color, index) => (
           <Color key={index} color={color} aria-label={color} />
         ))}
-      </ColorList>
-      <ul>
+      </List>
+      <List>
         <li>{artist}</li>
         <li>{year}</li>
         <li>{genre}</li>
-      </ul>
-    </>
+      </List>
+    </Wrapper>
   );
 }

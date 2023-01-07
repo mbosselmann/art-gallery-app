@@ -64,6 +64,7 @@ export default function ArtPiecePreview({
         <FavoriteButton
           isFavorite={isFavorite}
           onToggleFavorite={() => onToggleFavorite(slug)}
+          positionAbsolute={true}
         />
         <StyledImage src={image} fill alt={`${artist}: ${title}`} />
       </ImageContainer>

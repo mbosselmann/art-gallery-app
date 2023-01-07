@@ -22,5 +22,5 @@ test("displays the active color if isFavorite is true", () => {
 
   const button = screen.getByRole("button", { name: "unlike" });
 
-  expect(button).toHaveStyle({ "background-color": "gold" });
+  expect(button).toHaveStyle({ "background-color": "LightCoral" });
 });

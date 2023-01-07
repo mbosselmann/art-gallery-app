@@ -9,8 +9,7 @@ export default function SpotlightPage({
     pieces && pieces[Math.floor(Math.random() * (pieces.length - 1))];
 
   return (
-    <main>
-      <h1>Art Gallery</h1>
+    <>
       {spotlightPiece && (
         <Spotlight
           image={spotlightPiece.imageSource}
@@ -21,6 +20,6 @@ export default function SpotlightPage({
           onToggleFavorite={() => onToggleFavorite(spotlightPiece.slug)}
         />
       )}
-    </main>
+    </>
   );
 }
