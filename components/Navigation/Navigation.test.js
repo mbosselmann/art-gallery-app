@@ -1,6 +1,15 @@
 import { render, screen } from "@testing-library/react";
 import Navigation from "./index.js";
 
+jest.mock("next/router", () => ({
+  useRouter() {
+    return {
+      push: jest.fn(),
+      asPath: "/",
+    };
+  },
+}));
+
 test("renders three links", () => {
   render(<Navigation />);
 
