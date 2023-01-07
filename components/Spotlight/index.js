@@ -20,6 +20,7 @@ export default function Spotlight({
         <FavoriteButton
           isFavorite={isFavorite}
           onToggleFavorite={onToggleFavorite}
+          positionAbsolute={true}
         />
         <StyledImage src={image} fill alt={`spotlight: ${artist}`} />
       </ImageContainer>
