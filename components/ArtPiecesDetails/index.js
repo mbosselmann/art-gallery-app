@@ -80,7 +80,14 @@ export default function ArtPiecesDetails({
       </ActionContainer>
       <h2>{title}</h2>
       <ImageContainer>
-        <StyledImage src={image} fill alt={`${artist}: ${title}`} />
+        <StyledImage
+          src={image}
+          fill
+          sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+          alt={`${artist}: ${title}`}
+        />
       </ImageContainer>
       <List role="list">
         {colors.map((color, index) => (
