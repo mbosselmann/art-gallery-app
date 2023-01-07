@@ -66,7 +66,14 @@ export default function ArtPiecePreview({
           onToggleFavorite={() => onToggleFavorite(slug)}
           positionAbsolute={true}
         />
-        <StyledImage src={image} fill alt={`${artist}: ${title}`} />
+        <StyledImage
+          src={image}
+          fill
+          sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+          alt={`${artist}: ${title}`}
+        />
       </ImageContainer>
       <Caption>{`${artist}: ${title}`}</Caption>
       <Link href={`art-pieces/${slug}`} passhref legacyBehavior>
