@@ -8,6 +8,20 @@ const ImageContainer = styled.div`
   height: 30rem;
 `;
 
+const ColorList = styled.ul`
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+`;
+
+const Color = styled.li`
+  width: 2rem;
+  height: 2rem;
+  background-color: ${(props) => props.color};
+  border-radius: 50%;
+`;
+
 export default function ArtPiecesDetails({
   image,
   title,
@@ -16,6 +30,7 @@ export default function ArtPiecesDetails({
   genre,
   isFavorite,
   onToggleFavorite,
+  colors,
 }) {
   return (
     <>
@@ -28,6 +43,11 @@ export default function ArtPiecesDetails({
       </ImageContainer>
       <Link href="/art-pieces">Back</Link>
       <h2>{title}</h2>
+      <ColorList role="list">
+        {colors.map((color, index) => (
+          <Color key={index} color={color} aria-label={color} />
+        ))}
+      </ColorList>
       <ul>
         <li>{artist}</li>
         <li>{year}</li>

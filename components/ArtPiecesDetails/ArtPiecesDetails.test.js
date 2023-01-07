@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import ArtPiecesDetails from "./index.js";
 
-test("displays image, title, artist,year, and genre of art piece", () => {
+test("displays image, title, artist, year, genre, back link and colors of art piece", () => {
   render(
     <ArtPiecesDetails
       artist="Min An"
@@ -9,6 +9,7 @@ test("displays image, title, artist,year, and genre of art piece", () => {
       image="https://example-apis.vercel.app/assets/art/silhouette-trees.jpg"
       year="2017"
       genre="Nature"
+      colors={["#0f5855", "#e6ba15", "#b42011", "#cec4c6", "#d5561f"]}
     />
   );
   const image = screen.getByAltText("Min An: Silhouette Photo of Trees");
@@ -19,6 +20,12 @@ test("displays image, title, artist,year, and genre of art piece", () => {
   });
   const year = screen.getByText("2017");
   const genre = screen.getByText("Nature");
+  const backLink = screen.getByRole("link", { name: "Back" });
+  const greenColor = screen.getByRole("listitem", { name: "#0f5855" });
+  const goldColor = screen.getByRole("listitem", { name: "#e6ba15" });
+  const redColor = screen.getByRole("listitem", { name: "#b42011" });
+  const greyColor = screen.getByRole("listitem", { name: "#cec4c6" });
+  const orangeColor = screen.getByRole("listitem", { name: "#d5561f" });
 
   expect(image).toHaveAttribute(
     "src",
@@ -28,20 +35,10 @@ test("displays image, title, artist,year, and genre of art piece", () => {
   expect(artist).toBeInTheDocument();
   expect(year).toBeInTheDocument();
   expect(genre).toBeInTheDocument();
-});
-
-test("displays back link", () => {
-  render(
-    <ArtPiecesDetails
-      artist="Min An"
-      title="Silhouette Photo of Trees"
-      image="https://example-apis.vercel.app/assets/art/silhouette-trees.jpg"
-      year="2017"
-      genre="Nature"
-    />
-  );
-
-  const backLink = screen.getByRole("link", { name: "Back" });
-
   expect(backLink).toBeInTheDocument();
+  expect(greenColor).toBeInTheDocument();
+  expect(goldColor).toBeInTheDocument();
+  expect(redColor).toBeInTheDocument();
+  expect(greyColor).toBeInTheDocument();
+  expect(orangeColor).toBeInTheDocument();
 });
