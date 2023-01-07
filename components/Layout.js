@@ -1,6 +1,6 @@
 import Navigation from "./Navigation/index.js";
 import styled from "styled-components";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useRouter } from "next/router.js";
 
 const Wrapper = styled.div`
@@ -18,10 +18,17 @@ const Headline = styled.h1`
 `;
 
 export default function Layout({ children }) {
+  const { pathname } = useRouter();
+  const scrollRef = useRef();
+
+  useEffect(() => {
+    scrollRef.current.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <Wrapper>
       <Headline>Art Gallery</Headline>
-      <Main>{children}</Main>
+      <Main ref={scrollRef}>{children}</Main>
       <Navigation />
     </Wrapper>
   );
