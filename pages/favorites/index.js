@@ -7,7 +7,9 @@ export default function FavoritesPage({
   onToggleFavorite,
 }) {
   const favorites = pieces?.filter((piece) =>
-    artPiecesInfo.some((artPiece) => artPiece.slug === piece.slug)
+    artPiecesInfo.find(
+      (artPiece) => artPiece.slug === piece.slug && artPiece.isFavorite
+    )
   );
 
   return (

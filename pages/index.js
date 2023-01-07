@@ -14,9 +14,10 @@ export default function SpotlightPage({
         <Spotlight
           image={spotlightPiece.imageSource}
           artist={spotlightPiece.artist}
-          isFavorite={artPiecesInfo.some(
-            (piece) => piece.slug === spotlightPiece.slug
-          )}
+          isFavorite={
+            artPiecesInfo?.find((piece) => piece.slug === spotlightPiece.slug)
+              ?.isFavorite
+          }
           onToggleFavorite={() => onToggleFavorite(spotlightPiece.slug)}
         />
       )}

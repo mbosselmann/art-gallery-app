@@ -2,6 +2,8 @@ import styled from "styled-components";
 import FavoriteButton from "../FavoriteButton";
 import Image from "next/image.js";
 import { useRouter } from "next/router";
+import CommentForm from "../CommentForm/index.js";
+import Comments from "../Comments/index.js";
 import { List } from "../List.js";
 
 const Wrapper = styled.section`
@@ -56,9 +58,11 @@ export default function ArtPiecesDetails({
   isFavorite,
   onToggleFavorite,
   colors,
+  addComment,
+  comments,
 }) {
   const router = useRouter();
-
+  console.log(comments);
   return (
     <Wrapper>
       <ActionContainer>
@@ -88,6 +92,8 @@ export default function ArtPiecesDetails({
         <li>{year}</li>
         <li>{genre}</li>
       </List>
+      {comments && <Comments comments={comments} />}
+      <CommentForm addComment={addComment} />
     </Wrapper>
   );
 }
