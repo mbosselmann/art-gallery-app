@@ -25,6 +25,7 @@ export default function ArtPieceDetailsPage({
         (piece) => piece.slug === selectedArtPiece.slug
       )}
       onToggleFavorite={() => onToggleFavorite(selectedArtPiece.slug)}
+      colors={selectedArtPiece.colors}
     />
   );
 }
