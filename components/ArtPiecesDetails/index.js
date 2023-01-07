@@ -62,7 +62,7 @@ export default function ArtPiecesDetails({
   comments,
 }) {
   const router = useRouter();
-  console.log(comments);
+
   return (
     <Wrapper>
       <ActionContainer>
