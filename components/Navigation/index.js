@@ -30,20 +30,23 @@ export default function Navigation() {
     <nav>
       <List role="list">
         <li>
-          <NavLink href="/" active={router.pathname === "/"}>
+          <NavLink href="/" active={router.pathname === "/" ? "active" : ""}>
             Spotlight
           </NavLink>
         </li>
         <li>
           <NavLink
             href="/art-pieces"
-            active={router.pathname === "/art-pieces"}
+            active={router.pathname === "/art-pieces" ? "active" : ""}
           >
             Art Pieces
           </NavLink>
         </li>
         <li>
-          <NavLink href="/favorites" active={router.pathname === "/favorites"}>
+          <NavLink
+            href="/favorites"
+            active={router.pathname === "/favorites" ? "active" : ""}
+          >
             Favorites
           </NavLink>
         </li>

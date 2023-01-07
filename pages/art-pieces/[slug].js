@@ -5,12 +5,15 @@ export default function ArtPieceDetailsPage({
   pieces,
   artPiecesInfo,
   onToggleFavorite,
+  addComment,
 }) {
   const router = useRouter();
   const { slug } = router.query;
 
   const selectedArtPiece = pieces?.find((piece) => piece.slug === slug);
-
+  const selectedArtPieceComments = artPiecesInfo?.find(
+    (piece) => piece.slug === selectedArtPiece?.slug
+  )?.comments;
   if (!selectedArtPiece) {
     return null;
   }
@@ -21,11 +24,14 @@ export default function ArtPieceDetailsPage({
       artist={selectedArtPiece.artist}
       year={selectedArtPiece.year}
       genre={selectedArtPiece.genre}
-      isFavorite={artPiecesInfo.some(
-        (piece) => piece.slug === selectedArtPiece.slug
-      )}
+      isFavorite={
+        artPiecesInfo?.find((piece) => piece.slug === selectedArtPiece.slug)
+          ?.isFavorite
+      }
       onToggleFavorite={() => onToggleFavorite(selectedArtPiece.slug)}
       colors={selectedArtPiece.colors}
+      comments={selectedArtPieceComments}
+      addComment={(newComment) => addComment(newComment, selectedArtPiece.slug)}
     />
   );
 }

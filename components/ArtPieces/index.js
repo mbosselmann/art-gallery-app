@@ -28,9 +28,10 @@ export default function ArtPieces({ pieces, artPiecesInfo, onToggleFavorite }) {
               image={piece.imageSource}
               artist={piece.artist}
               slug={piece.slug}
-              isFavorite={artPiecesInfo?.find(
-                (artPiece) => artPiece.slug === piece.slug
-              )}
+              isFavorite={
+                artPiecesInfo?.find((artPiece) => artPiece.slug === piece.slug)
+                  ?.isFavorite
+              }
               onToggleFavorite={onToggleFavorite}
             />
           </li>
