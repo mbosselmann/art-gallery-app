@@ -1,6 +1,15 @@
 import { render, screen } from "@testing-library/react";
 import ArtPiecesDetails from "./index.js";
 
+jest.mock("next/router", () => ({
+  useRouter() {
+    return {
+      push: jest.fn(),
+      asPath: "/",
+    };
+  },
+}));
+
 test("displays image, title, artist, year, genre, back link and colors of art piece", () => {
   render(
     <ArtPiecesDetails
@@ -20,7 +29,7 @@ test("displays image, title, artist, year, genre, back link and colors of art pi
   });
   const year = screen.getByText("2017");
   const genre = screen.getByText("Nature");
-  const backLink = screen.getByRole("link", { name: "Back" });
+  const backButton = screen.getByRole("button", { name: "back" });
   const greenColor = screen.getByRole("listitem", { name: "#0f5855" });
   const goldColor = screen.getByRole("listitem", { name: "#e6ba15" });
   const redColor = screen.getByRole("listitem", { name: "#b42011" });
@@ -35,7 +44,7 @@ test("displays image, title, artist, year, genre, back link and colors of art pi
   expect(artist).toBeInTheDocument();
   expect(year).toBeInTheDocument();
   expect(genre).toBeInTheDocument();
-  expect(backLink).toBeInTheDocument();
+  expect(backButton).toBeInTheDocument();
   expect(greenColor).toBeInTheDocument();
   expect(goldColor).toBeInTheDocument();
   expect(redColor).toBeInTheDocument();
