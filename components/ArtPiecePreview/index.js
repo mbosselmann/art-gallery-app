@@ -76,7 +76,7 @@ export default function ArtPiecePreview({
         />
       </ImageContainer>
       <Caption>{`${artist}: ${title}`}</Caption>
-      <Link href={`art-pieces/${slug}`} passhref legacyBehavior>
+      <Link href={`art-pieces/${slug}`} passHref legacyBehavior>
         <Anchor>
           <ScreenReaderOnly>More Info</ScreenReaderOnly>
         </Anchor>
