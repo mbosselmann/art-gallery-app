@@ -12,6 +12,10 @@ test("renders image and artist of spotlight art piece", () => {
   const image = screen.getByAltText("spotlight: Steve Johnson");
   expect(image).toHaveAttribute(
     "src",
-    expect.stringContaining("orange-red-and-green.jpg")
+    expect.stringContaining(
+      encodeURIComponent(
+        "https://example-apis.vercel.app/assets/art/orange-red-and-green.jpg"
+      )
+    )
   );
 });

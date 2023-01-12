@@ -10,7 +10,7 @@ test("renders image, title and artist for the piece", () => {
       slug="orange-red-and-green"
     />
   );
-  const image = screen.getByAltText(
+  const image = screen.getByLabelText(
     "Steve Johnson: Orange Red and Green Abstract Painting"
   );
   const artist = screen.getByText(/Steve Johnson/);
@@ -18,7 +18,11 @@ test("renders image, title and artist for the piece", () => {
 
   expect(image).toHaveAttribute(
     "src",
-    expect.stringContaining("orange-red-and-green.jpg")
+    expect.stringContaining(
+      encodeURIComponent(
+        "https://example-apis.vercel.app/assets/art/orange-red-and-green.jpg"
+      )
+    )
   );
   expect(artist).toBeInTheDocument();
   expect(title).toBeInTheDocument();

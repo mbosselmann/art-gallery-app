@@ -16,10 +16,10 @@ const List = styled.ul`
 const NavLink = styled(Link)`
   text-decoration: none;
   padding: 0 0.3rem;
-  color: ${({ active }) => (active ? "lightcoral" : "black")};
+  color: ${({ active }) => (active ? "var(--primary-color)" : "black")};
   font-weight: bold;
   &:hover {
-    border-bottom: 5px dotted lightcoral;
+    border-bottom: 5px dotted var(--primary-color);
   }
 `;
 

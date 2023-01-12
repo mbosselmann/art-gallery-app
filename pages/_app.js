@@ -3,10 +3,19 @@ import useSWR from "swr";
 import Layout from "../components/Layout.js";
 import { useImmerLocalStorageState } from "../lib/hook/useImmerLocalStorageState.js";
 
-const fetcher = (url) => fetch(url).then((r) => r.json());
+const fetcher = async (...args) => {
+  const response = await fetch(...args);
+  if (!response.ok) {
+    throw new Error(`Request with ${JSON.stringify(args)} failed.`);
+  }
+  return await response.json();
+};
 
 export default function App({ Component, pageProps }) {
-  const { data } = useSWR("https://example-apis.vercel.app/api/art", fetcher);
+  const { data, isLoading, error } = useSWR(
+    "https://example-apis.vercel.app/api/art",
+    fetcher
+  );
   const [artPiecesInfo, setArtPiecesInfo] = useImmerLocalStorageState(
     "art-pieces-info",
     { defaultValue: [] }
@@ -27,7 +36,7 @@ export default function App({ Component, pageProps }) {
     }
   }
 
-  function addComment(newComment, slug) {
+  function addComment(slug, newComment) {
     const artPiece = artPiecesInfo.find((piece) => piece.slug === slug);
     if (artPiece) {
       setArtPiecesInfo(
@@ -54,7 +63,7 @@ export default function App({ Component, pageProps }) {
       <GlobalStyle />
       <Component
         {...pageProps}
-        pieces={data}
+        pieces={isLoading || error ? [] : data}
         artPiecesInfo={artPiecesInfo}
         onToggleFavorite={handleToggleFavorite}
         addComment={addComment}

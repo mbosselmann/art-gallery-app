@@ -63,7 +63,7 @@ export default function ArtPiecePreview({
       <ImageContainer>
         <FavoriteButton
           isFavorite={isFavorite}
-          onToggleFavorite={() => onToggleFavorite(slug)}
+          onToggleFavorite={onToggleFavorite}
           positionAbsolute={true}
         />
         <StyledImage
@@ -72,10 +72,11 @@ export default function ArtPiecePreview({
           sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
               33vw"
-          alt={`${artist}: ${title}`}
+          alt=""
+          aria-labelledby={`caption-${slug}`}
         />
       </ImageContainer>
-      <Caption>{`${artist}: ${title}`}</Caption>
+      <Caption id={`caption-${slug}`}>{`${artist}: ${title}`}</Caption>
       <Link href={`art-pieces/${slug}`} passHref legacyBehavior>
         <Anchor>
           <ScreenReaderOnly>More Info</ScreenReaderOnly>

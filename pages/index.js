@@ -1,3 +1,4 @@
+import Head from "next/head.js";
 import Spotlight from "../components/Spotlight/index.js";
 
 export default function SpotlightPage({
@@ -6,16 +7,19 @@ export default function SpotlightPage({
   onToggleFavorite,
 }) {
   const spotlightPiece =
-    pieces && pieces[Math.floor(Math.random() * (pieces.length - 1))];
+    pieces[Math.floor(Math.random() * (pieces.length - 1))];
 
   return (
     <>
+      <Head>
+        <title>Art Gallery - Spotlight</title>
+      </Head>
       {spotlightPiece && (
         <Spotlight
           image={spotlightPiece.imageSource}
           artist={spotlightPiece.artist}
           isFavorite={
-            artPiecesInfo?.find((piece) => piece.slug === spotlightPiece.slug)
+            artPiecesInfo.find((piece) => piece.slug === spotlightPiece.slug)
               ?.isFavorite
           }
           onToggleFavorite={() => onToggleFavorite(spotlightPiece.slug)}

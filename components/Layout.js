@@ -2,6 +2,7 @@ import Navigation from "./Navigation/index.js";
 import styled from "styled-components";
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/router.js";
+import Head from "next/head.js";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -27,6 +28,9 @@ export default function Layout({ children }) {
 
   return (
     <Wrapper>
+      <Head>
+        <title>Art Gallery</title>
+      </Head>
       <Headline>Art Gallery</Headline>
       <Main ref={scrollRef}>{children}</Main>
       <Navigation />

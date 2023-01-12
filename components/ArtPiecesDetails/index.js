@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import FavoriteButton from "../FavoriteButton";
 import Image from "next/image.js";
-import { useRouter } from "next/router";
 import CommentForm from "../CommentForm/index.js";
 import Comments from "../Comments/index.js";
 import { List } from "../List.js";
@@ -60,17 +59,12 @@ export default function ArtPiecesDetails({
   colors,
   addComment,
   comments,
+  onBack,
 }) {
-  const router = useRouter();
-
   return (
     <Wrapper>
       <ActionContainer>
-        <BackButton
-          type="button"
-          onClick={() => router.back()}
-          aria-label="back"
-        >
+        <BackButton type="button" onClick={onBack} aria-label="navigate back">
           ←
         </BackButton>
         <FavoriteButton
@@ -82,6 +76,7 @@ export default function ArtPiecesDetails({
       <ImageContainer>
         <StyledImage
           src={image}
+          priority
           fill
           sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,

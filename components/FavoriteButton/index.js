@@ -7,7 +7,7 @@ const Button = styled.button`
   right: 1rem;
   top: 1.5rem;
   z-index: 1;
-  background-color: ${(props) => (props.isFavorite ? "LightCoral" : "white")};
+  background-color: ${(props) => (props.isFavorite ? "lightcoral" : "white")};
   border: 3px solid black;
   border-radius: 50%;
   display: grid;

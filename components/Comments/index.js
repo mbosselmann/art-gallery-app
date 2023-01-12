@@ -16,7 +16,9 @@ export default function Comments({ comments }) {
       <List role="list">
         {comments.map((comment, index) => (
           <li key={index}>
-            <q>{comment}</q>
+            <p>
+              <q>{comment}</q>
+            </p>
           </li>
         ))}
       </List>

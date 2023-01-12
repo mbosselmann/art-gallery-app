@@ -1,4 +1,4 @@
-import ArtPieces from "../../components/ArtPieces/index.js";
+import ArtPieces from "../../components/ArtPieces";
 
 export default function ArtPiecesPage({
   pieces,

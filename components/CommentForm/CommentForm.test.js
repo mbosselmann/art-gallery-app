@@ -37,6 +37,8 @@ test("does not call addComment when submitting the form if textarea is empty", a
   const textarea = screen.getByLabelText("Add comment:");
   const button = screen.getByRole("button", { name: "Send" });
 
+  expect(textarea).toHaveValue("");
+
   await user.click(button);
 
   expect(mockAddComment).not.toHaveBeenCalled();
