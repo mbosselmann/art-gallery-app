@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ArtPiecesDetails from "../../../components/ArtPiecesDetails";
 
 export default function ArtPieceDetailsPage({
@@ -8,13 +8,10 @@ export default function ArtPieceDetailsPage({
   onToggleFavorite,
   addComment,
 }) {
-  const [selectedArtPiece, setSelectedArtPiece] = useState(null);
   const router = useRouter();
   const { slug } = router.query;
 
-  useEffect(() => {
-    setSelectedArtPiece(pieces.find((piece) => piece.slug === slug));
-  }, [setSelectedArtPiece, pieces, slug]);
+  const selectedArtPiece = pieces.find((piece) => piece.slug === slug);
 
   // redirect to 404, in case the piece couldn't be found within 3 seconds
   useEffect(() => {
