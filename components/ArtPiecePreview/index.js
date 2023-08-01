@@ -26,7 +26,7 @@ const Caption = styled.figcaption`
   padding: 0.5rem 0.3rem;
 `;
 
-const Anchor = styled.a`
+const StyledLink = styled(Link)`
   &::after {
     content: "";
     display: block;
@@ -77,11 +77,9 @@ export default function ArtPiecePreview({
         />
       </ImageContainer>
       <Caption id={`caption-${slug}`}>{`${artist}: ${title}`}</Caption>
-      <Link href={`art-pieces/${slug}`} passHref legacyBehavior>
-        <Anchor>
-          <ScreenReaderOnly>More Info</ScreenReaderOnly>
-        </Anchor>
-      </Link>
+      <StyledLink href={`art-pieces/${slug}`}>
+        <ScreenReaderOnly>More Info</ScreenReaderOnly>
+      </StyledLink>
     </Figure>
   );
 }
